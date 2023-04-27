@@ -24,7 +24,7 @@ const userPrompts = () => {
     {
       type: 'input',
       name: 'usage',
-      message: 'How do you use this app?',
+      message: 'Enter instructions on how to use this app',
     },
     {
       type: 'list',
@@ -34,18 +34,18 @@ const userPrompts = () => {
     },
     {
       type: 'input',
-      name: 'contributors',
-      message: 'Are there any contributors?',
+      name: 'contribution',
+      message: 'Enter any contribution guidelines',
     },
     {
       type: 'input',
       name: 'tests',
-      message: 'Enter some tests',
+      message: 'Enter any test instructions?',
     },
     {
       type: 'input',
       name: 'questions',
-      message: 'Instructions on how to reach me if theres questions',
+      message: 'Enter any instructions on how to be reached if theres questions',
     },
     {
       type: 'input',
@@ -62,7 +62,7 @@ const userPrompts = () => {
 
 
 // This is the README format that all of the info from the above prompts gets plugged into and is also what renders in the newly created file 
-const generateMarkdown = ({title, description, installation, usage, license, contributors, tests, questions, github, email}) =>
+const generateMarkdown = ({title, description, installation, usage, license, contribution, tests, questions, github, email}) =>
  `# ${title}
 
   [![license](https://img.shields.io/badge/license-${license}-blue.svg)](https://shields.io/)
@@ -73,7 +73,7 @@ const generateMarkdown = ({title, description, installation, usage, license, con
   ## Table of Contents
   * [Installation](#installation)
   * [Usage](#usage) 
-  * [Contributors](#contributors)
+  * [Contribution](#contribution)
   * [Tests](#tests)
   
   ## Installation
@@ -85,8 +85,8 @@ const generateMarkdown = ({title, description, installation, usage, license, con
   ## License
   - ${license}
 
-  ## Contributors
-  - ${contributors}
+  ## Contribution
+  - ${contribution}
 
   ## Tests
   - ${tests}

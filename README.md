@@ -3,7 +3,7 @@
 ## what was the goal of this project?
 - 
 
-## link to the production "live" version of the code
+## link to the demo video
 - 
 
 ## screenshots of webpage
