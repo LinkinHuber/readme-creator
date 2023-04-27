@@ -1,10 +1,10 @@
-// TODO: Include packages needed for this application
+// The packages required to run this which include inquirer and fs promises
 const inquirer = require('inquirer');
 const { writeFile } = require('fs').promises;
 
 
-// TODO: Create an array of questions for user input
-const promptUser = () => {
+// These are all of the prompts that are asked to collect information for the README file your trying to create
+const userPrompts = () => {
   return inquirer.prompt([
     {
       type: 'input',
@@ -61,11 +61,11 @@ const promptUser = () => {
 };
 
 
-// TODO: Create a function to write README file
+// This is the README format that all of the info from the above prompts gets plugged into and is also what renders in the newly created file 
 const generateMarkdown = ({title, description, installation, usage, license, contributors, tests, questions, github, email}) =>
  `# ${title}
 
- [![license](https://img.shields.io/badge/license-${license}-blue.svg)](https://shields.io/)
+  [![license](https://img.shields.io/badge/license-${license}-blue.svg)](https://shields.io/)
   
   ## Description 
   - ${description}
@@ -97,14 +97,14 @@ const generateMarkdown = ({title, description, installation, usage, license, con
   - Email: ${email}`
 
 
-// TODO: Create a function to initialize app
-  const init = () => {
-    promptUser()
-    .then((data) => writeFile('./demo/demoREADME.md', generateMarkdown(data)))
-    .then(() => console.log('Successfully generated your README.md'))
-    .catch((err) => console.error(err));
-  };
+// Function to initialize app which writes to the demoREADME file and logs if it was a success or if there was an error
+const init = () => {
+  userPrompts()
+  .then((data) => writeFile('./demo/demoREADME.md', generateMarkdown(data)))
+  .then(() => console.log('Successfully generated your README.md'))
+  .catch((err) => console.error(err));
+};
 
 
 // Function call to initialize app
-init()
+init();
