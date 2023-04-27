@@ -30,7 +30,7 @@ const promptUser = () => {
       type: 'list',
       name: 'license',
       message: 'Select a license',
-      choices: ['License: MIT', 'License: Apache 2.0', 'License: GPL-3.0']
+      choices: ['MIT', 'ISC', 'CC', 'GPL', 'WTFPL']
     },
     {
       type: 'input',
@@ -64,12 +64,11 @@ const promptUser = () => {
 // TODO: Create a function to write README file
 const generateMarkdown = ({title, description, installation, usage, license, contributors, tests, questions, github, email}) =>
  `# ${title}
+
+ [![license](https://img.shields.io/badge/license-${license}-blue.svg)](https://shields.io/)
   
   ## Description 
   - ${description}
-
-  ## License:
-  [![license](https://img.shields.io/badge/license-${license}-blue.svg)](https://shields.io/)
 
   ## Table of Contents
   * [Installation](#installation)
