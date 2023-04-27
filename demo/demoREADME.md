@@ -7,7 +7,6 @@
   [![license](https://img.shields.io/badge/license-License: MIT-blue.svg)](https://shields.io/)
 
   ## Table of Contents
-  - 
   * [Installation](#installation)
   * [Usage](#usage) 
   * [Contributors](#contributors)

@@ -86,7 +86,7 @@ const generateMarkdown = ({title, description, installation, usage, license, con
   ## License
   - ${license}
 
-  ## contributors
+  ## Contributors
   - ${contributors}
 
   ## Tests
@@ -101,7 +101,7 @@ const generateMarkdown = ({title, description, installation, usage, license, con
 // TODO: Create a function to initialize app
   const init = () => {
     promptUser()
-    .then((data) => writeFile('demoREADME.md', generateMarkdown(data)))
+    .then((data) => writeFile('./demo/demoREADME.md', generateMarkdown(data)))
     .then(() => console.log('Successfully generated your README.md'))
     .catch((err) => console.error(err));
   };
