@@ -1,73 +1,111 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const { writeFile } = require('fs').promises;
-//const generateMarkdown = require('./utils/generateMarkdown.js');
+
 
 // TODO: Create an array of questions for user input
-  const promptUser = () => {
-    return inquirer.prompt([
-  {
-    type: 'input',
-    name: 'title',
-    message: 'Enter a project title',
-  },
-  {
-    type: 'input',
-    name: 'description',
-    message: 'Enter a project description',
-  },
-  {
-    type: 'input',
-    name: 'toc',
-    message: 'Optional, enter a table of contents',
-  },
-  {
-    type: 'input',
-    name: 'istallation',
-    message: 'Optional, enter installation instructions',
-  },
-  {
-    type: 'input',
-    name: 'usage',
-    message: 'Optional, enter the usage',
-  },
-  {
-    type: 'list',
-    name: 'license',
-    message: 'Optional, select a license',
-    choices: ['License: MIT', 'License: Apache 2.0', 'License: GPL-3.0']
-  },
-  {
-    type: 'input',
-    name: 'contributors',
-    message: 'Optional, who are the contributors?',
-  },
-  {
-    type: 'input',
-    name: 'tests',
-    message: 'Optional, enter some tests',
-  },
-  {
-    type: 'input',
-    name: 'questions',
-    message: 'Optional, enter some questions',
-  },
-]);
+const promptUser = () => {
+  return inquirer.prompt([
+    {
+      type: 'input',
+      name: 'title',
+      message: 'Enter a project title',
+    },
+    {
+      type: 'input',
+      name: 'description',
+      message: 'Enter a project description',
+    },
+    {
+      type: 'input',
+      name: 'installation',
+      message: 'Enter installation instructions',
+    },
+    {
+      type: 'input',
+      name: 'usage',
+      message: 'How do you use this app?',
+    },
+    {
+      type: 'list',
+      name: 'license',
+      message: 'Select a license',
+      choices: ['License: MIT', 'License: Apache 2.0', 'License: GPL-3.0']
+    },
+    {
+      type: 'input',
+      name: 'contributors',
+      message: 'Are there any contributors?',
+    },
+    {
+      type: 'input',
+      name: 'tests',
+      message: 'Enter some tests',
+    },
+    {
+      type: 'input',
+      name: 'questions',
+      message: 'Instructions on how to reach me if theres questions',
+    },
+    {
+      type: 'input',
+      name: 'github',
+      message: 'Enter your github username',
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'Enter your email',
+    },
+  ]);
 };
 
+
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+const generateMarkdown = ({title, description, installation, usage, license, contributors, tests, questions, github, email}) =>
+ `# ${title}
+  
+  ## Description 
+  - ${description}
+
+  ## License:
+  [![license](https://img.shields.io/badge/license-${license}-blue.svg)](https://shields.io/)
+
+  ## Table of Contents
+  * [Installation](#installation)
+  * [Usage](#usage) 
+  * [Contributors](#contributors)
+  * [Tests](#tests)
+  
+  ## Installation
+  - ${installation}
+
+  ## Usage 
+  - ${usage}
+
+  ## License
+  - ${license}
+
+  ## contributors
+  - ${contributors}
+
+  ## Tests
+  - ${tests}
+
+  ## Questions?
+  - ${questions}
+  - Github: [${github}](https://github.com/${github})
+  - Email: ${email}`
 
 
 // TODO: Create a function to initialize app
   const init = () => {
     promptUser()
-      // Use writeFile method imported from fs.promises to use promises instead of
-      // a callback function
-      .then((data) => writeFile('demoREADME.md', writeToFile(data)))
-      .then(() => console.log('Successfully generated your README.md'))
-      .catch((err) => console.error(err));
+    .then((data) => writeFile('demoREADME.md', generateMarkdown(data)))
+    .then(() => console.log('Successfully generated your README.md'))
+    .catch((err) => console.error(err));
   };
 
+
 // Function call to initialize app
-init();
+init()
